@@ -10,7 +10,7 @@ SDIR=src
 
 ODIR=obj
 	  
-testCGrid : ../CSDLGraphics.o testIScreen.o
+testIScreen : ../CSDLGraphics.o testIScreen.o
 	${CC} ${CFLAGS} ${LDFLAGS} ${TARGET} ../CSDLGraphics.o testIScreen.o -lmingw32 -lSDLmain -lSDL -lSDL_ttf -lSDL_image   
 clean:
 	-del *.o
