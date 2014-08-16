@@ -10,8 +10,8 @@ SDIR=src
 
 ODIR=obj
 	  
-testIScreen : ../CSDLGraphics.o testIScreen.o
-	${CC} ${CFLAGS} ${LDFLAGS} ${TARGET} ../CSDLGraphics.o testIScreen.o -lmingw32 -lSDLmain -lSDL -lSDL_ttf -lSDL_image   
+testIScreen : testIScreen.o
+	${CC} ${CFLAGS} ${LDFLAGS} ${TARGET} testIScreen.o -lmingw32 -L.. -lgamelib -lSDLmain -lSDL -lSDL_ttf -lSDL_image   
 clean:
 	-del *.o
 	-del testIScreen.exe

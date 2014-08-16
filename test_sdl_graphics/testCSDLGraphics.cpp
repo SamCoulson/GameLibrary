@@ -1,4 +1,4 @@
-#include "../CSDLGraphics.h"
+#include "../include/CSDLGraphics.h"
 #include <stdio.h>
 #include <assert.h>
 
@@ -169,7 +169,20 @@ int main( int argc, char* argv[] ){
 
 	setup();
 	graphics->initialise( SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_SWSURFACE, "testCSDLGraphics" );	
-	graphics->drawText( std::string("Hello World!"), 0, 0, std::string("./fonts/tunga.ttf"), 255, 0, 0 );
+	graphics->drawText( std::string("Hello World!"), 0, 0, std::string("./fonts/tunga.ttf"), 45, 255, 0, 0 );
+	graphics->update();
+	SDL_Delay( 2000 );
+	cleanup();
+
+	setup();
+	graphics->initialise( SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_SWSURFACE, "testCSDLGraphics" );
+
+	graphics->drawLine( 100, 100, 200, 100, 255, 50, 50); // Left to Right
+	graphics->drawLine( 200, 100, 200, 200, 255, 50, 50); // Up to down
+	
+	graphics->drawLine( 200, 200, 100, 200, 255, 50, 50); // Right to Left
+
+	graphics->drawLine( 100, 200, 100, 100, 255, 50, 50); // Down to Up 
 	graphics->update();
 	SDL_Delay( 2000 );
 	cleanup();

@@ -1,0 +1,10 @@
+SDL Compile-time version:1.2.15
+SDL Runtime version:1.2.14
+Video subsystem initialised
+**************Current video mode*******************
+Checking requested screen mode: 640 x 480 at 24 BPP
+Video mode set to 640 x 480 at 24 Bpp with flags SDL_SWSURFACE 
+Trying to load ./images/BBlockYellow.png
+Image ./images/BBlockYellow.png loaded successfully
+Trying to load ./images/GameBall.png
+Image ./images/GameBall.png loaded successfully

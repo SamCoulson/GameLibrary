@@ -10,8 +10,8 @@ SDIR=src
 
 ODIR=obj
 	  
-testCGrid : ../CSDLGraphics.o ../CGrid.o testCGrid.o
-	${CC} ${CFLAGS} ${LDFLAGS} ${TARGET} ../CSDLGraphics.o ../CGrid.o testCGrid.o -lmingw32 -lSDLmain -lSDL -lSDL_ttf -lSDL_image   
+testCGrid : testCGrid.o
+	${CC} ${CFLAGS} ${LDFLAGS} ${TARGET} testCGrid.o -lmingw32 -L.. -lgamelib -lSDLmain -lSDL -lSDL_ttf -lSDL_image   
 clean:
 	-del *.o
 	-del testCGrid.exe

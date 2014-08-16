@@ -1,5 +1,5 @@
-#include "../CSDLGraphics.h"
-#include "../IScreen.h"
+#include "../include/CSDLGraphics.h"
+#include "../include/IScreen.h"
 #include <stdio.h>
 #include <assert.h>
 #include <vector>

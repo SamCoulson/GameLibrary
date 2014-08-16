@@ -1,5 +1,5 @@
-#include "../CSDLGraphics.h"
-#include "../CGrid.h"
+#include "../include/CSDLGraphics.h"
+#include "../include/CGrid.h"
 #include <stdio.h>
 #include <assert.h>
 
@@ -82,7 +82,7 @@ int main( int argc, char* argv[] ){
 	setup();
 	graphics->initialise( SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_SWSURFACE, "CGrid Test"  );
 	SDL_Surface* tileImage;
-	tileImage = graphics->loadImageFromFile( std::string("./images/GoldBlock24bit.bmp"), false  );
+	tileImage = graphics->loadImageFromFile( std::string("./images/GoldBlock24bit.bmp"), 255, 0, 255  );
 	coords* image_xy_coords;
 	image_xy_coords = grid->getXY( 5, 6 );
 	graphics->draw( image_xy_coords->x, image_xy_coords->y, tileImage, SDL_GetVideoSurface(), NULL );
