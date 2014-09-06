@@ -13,5 +13,5 @@ ODIR=obj
 testCSDLGraphics : testCSDLGraphics.o
 	${CC} ${CFLAGS} ${LDFLAGS} ${TARGET} testCSDLGraphics.o -lmingw32 -lSDLmain -L.. -lgamelib -lSDL -lSDL_ttf -lSDL_image   
 clean:
-	-del $(SDIR)/*.o
+	-del *.o
 	-del testCSDLGraphics.exe

@@ -83,7 +83,7 @@ void CGrid::setTileFlag( unsigned int x, unsigned int y, int flag_code ){
 }
 
 // Returns the grid status int value
-int CGrid::getTileFlag( int x, unsigned int y){
+int CGrid::getTileFlag( unsigned int x, unsigned int y){
 	return pNewGrid[( y * m_grid_width) + x ].flag;
 }
 

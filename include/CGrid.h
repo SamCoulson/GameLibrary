@@ -18,8 +18,9 @@ class CGrid{
 			
 		// Get and set flags for each tile in the grid
 		void setTileFlag( unsigned int x, unsigned int y, int flag_code );
-		int getTileFlag( int x, unsigned int y);
-		
+		int getTileFlag( unsigned int x, unsigned int y );
+		int getWidth(){ return m_grid_width; }
+		int getHeight(){ return m_grid_height;}
 
 	private:
 		

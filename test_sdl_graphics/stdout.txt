@@ -100,8 +100,8 @@ Video subsystem initialised
 **************Current video mode*******************
 Checking requested screen mode: 640 x 480 at 32 BPP
 Video mode set to 640 x 480 at 32 Bpp with flags SDL_SWSURFACE 
-Trying to load ./images/test2.bmp
-Image ./images/test2.bmp loaded successfully
+Trying to load ./images/testbmp.bmp
+Image ./images/testbmp.bmp loaded successfully
 Shutting down font system
 Shutting down SDL
 SDL Compile-time version:1.2.15
@@ -126,8 +126,8 @@ Video subsystem initialised
 **************Current video mode*******************
 Checking requested screen mode: 640 x 480 at 32 BPP
 Video mode set to 640 x 480 at 32 Bpp with flags SDL_SWSURFACE 
-Trying to load ./images/MarioStand.jpg
-Image ./images/MarioStand.jpg loaded successfully
+Trying to load ./images/testpng.png
+Image ./images/testpng.png loaded successfully
 Shutting down font system
 Shutting down SDL
 SDL Compile-time version:1.2.15
@@ -136,18 +136,8 @@ Video subsystem initialised
 **************Current video mode*******************
 Checking requested screen mode: 640 x 480 at 32 BPP
 Video mode set to 640 x 480 at 32 Bpp with flags SDL_SWSURFACE 
-Trying to load ./images/MarioStand.bmp
-Image ./images/MarioStand.bmp loaded successfully
-Shutting down font system
-Shutting down SDL
-SDL Compile-time version:1.2.15
-SDL Runtime version:1.2.14
-Video subsystem initialised
-**************Current video mode*******************
-Checking requested screen mode: 640 x 480 at 32 BPP
-Video mode set to 640 x 480 at 32 Bpp with flags SDL_SWSURFACE 
-Trying to load ./images/happy.png
-Image ./images/happy.png loaded successfully
+Trying to load ./images/testjpg.jpg
+Image ./images/testjpg.jpg loaded successfully
 Shutting down font system
 Shutting down SDL
 SDL Compile-time version:1.2.15

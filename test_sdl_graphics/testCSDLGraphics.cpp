@@ -118,7 +118,7 @@ int main( int argc, char* argv[] ){
 	
 	setup();
 	graphics->initialise( SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_SWSURFACE, "testCSDLGraphics" );	
-	std::string filename = "./images/test2.bmp"; 
+	std::string filename = "./images/testbmp.bmp"; 
 	SDL_Surface* surface01 = graphics->loadImageFromFile( filename, 255, 0, 255 );
 	assert( surface01 != NULL && "loadImageFromFile() - Correct filename" );		
 	cleanup();
@@ -141,7 +141,7 @@ int main( int argc, char* argv[] ){
 
 	setup();
 	graphics->initialise( SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_SWSURFACE, "testCSDLGraphics" );	
-	std::string sprite_filename_jpg = "./images/MarioStand.jpg"; 
+	std::string sprite_filename_jpg = "./images/testpng.png"; 
 	SDL_Surface* sprite_jpg = graphics->loadImageFromFile( sprite_filename_jpg, 255, 0, 255 );
 	graphics->draw( 0, 0, sprite_jpg, SDL_GetVideoSurface(), NULL );
 	graphics->update();
@@ -150,26 +150,16 @@ int main( int argc, char* argv[] ){
 
 	setup();
 	graphics->initialise( SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_SWSURFACE, "testCSDLGraphics" );	
-	std::string sprite_filename_trans = "./images/MarioStand.bmp"; 
+	std::string sprite_filename_trans = "./images/testjpg.jpg"; 
 	SDL_Surface* sprite_bmp_trans = graphics->loadImageFromFile( sprite_filename_trans, 255, 0, 255  );
 	graphics->draw( 0, 0, sprite_bmp_trans, SDL_GetVideoSurface(), NULL );
 	graphics->update();
 	SDL_Delay( 2000 );
 	cleanup();
-
-
+	
 	setup();
 	graphics->initialise( SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_SWSURFACE, "testCSDLGraphics" );	
-	std::string sprite_filename_png = "./images/happy.png"; 
-	SDL_Surface* sprite_png = graphics->loadImageFromFile( sprite_filename_png, 255, 255, 255 );
-	graphics->draw( 0, 0, sprite_png, SDL_GetVideoSurface(), NULL );
-	graphics->update();
-	SDL_Delay( 2000 );
-	cleanup();
-
-	setup();
-	graphics->initialise( SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_SWSURFACE, "testCSDLGraphics" );	
-	graphics->drawText( std::string("Hello World!"), 0, 0, std::string("./fonts/tunga.ttf"), 45, 255, 0, 0 );
+	graphics->drawText( std::string("Hello World!"), 0, 0, std::string("./fonts/freesans.ttf"), 45, 255, 0, 0 );
 	graphics->update();
 	SDL_Delay( 2000 );
 	cleanup();

@@ -10,9 +10,9 @@ SDIR=src
 
 ODIR=obj
 	  
-gamelib : src/csdlgraphics.o src/ccollision.o src/cgrid.o
-	${CC} ${CFLAGS} ${LDFLAGS} ${TARGET} src/csdlgraphics.o src/ccollision.o src/cgrid.o
-	ar rcs libgamelib.a src/csdlgraphics.o src/ccollision.o src/cgrid.o
+gamelib : src/csdlgraphics.o src/csdlsound.o src/ccollision.o src/cgrid.o
+	${CC} ${CFLAGS} ${LDFLAGS} ${TARGET} src/csdlgraphics.o src/csdlsound.o src/ccollision.o src/cgrid.o
+	ar rcs libgamelib.a src/csdlgraphics.o src/csdlsound.o src/ccollision.o src/cgrid.o
 
 clean:
-	-del *.o
+	-del src\*.o
