@@ -1,6 +1,4 @@
-
 // CSDLGraphics.h - Headers for CSDLGraphics.cpp
-
 #ifndef INC_CSDLGRAPHICS_H
 #define INC_CSDLGRAPHICS_H
 // SDL library
@@ -12,29 +10,11 @@
 #include "Globals.h"
 
 // CSDL initialises SDL graphical component.
-class CSDLGraphics
+class __declspec(dllexport) CSDLGraphics
 {
 public:
 	CSDLGraphics();
 	~CSDLGraphics();
-
-	// Setup SDL after object creation
-	bool initialise( int screenWidth, int screenHeight, int screenBPP, Uint32 surfaceType, const char* titleCaption );
-
-	// Shutdown and cleanup after SDL
-	void shutdown();
-
-	// Output information about potential or set videos modes 
-	void outputVideoModeInfo( void );
-
-	// Output information about possible video modes
-	void outputVideoModes( void );
-
-	// Set the video mode
-	bool setVideoMode( int screenWidth, int screenHeight, int screenBPP, Uint32 surfaceType );
-
-	// Set the caption for the window
-	void setWindowCaption( const char* windowTitle );
 
 	// Load an image from a file with type *.png, *.jpg, *.bmp 
 	SDL_Surface* loadImageFromFile( std::string filename, Uint8 r, Uint8 g, Uint8 b );
@@ -63,10 +43,6 @@ public:
 
 	// Flushes the back buffer to the screen
 	void update();
-private:
-
-	// Screen buffer should hide in private and add a getter function.
-	SDL_Surface *screenSurface;
 };
 
 #endif // INC_CSDL_H

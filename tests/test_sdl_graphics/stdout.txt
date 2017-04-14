@@ -1,0 +1,158 @@
+Shutting down font system
+Shutting down SDL
+SDL Compile-time version:1.2.15
+SDL Runtime version:1.2.14
+Video subsystem initialised
+**************Current video mode*******************
+Checking requested screen mode: 640 x 480 at 32 BPP
+Video mode set to 640 x 480 at 32 Bpp with flags SDL_SWSURFACE 
+Shutting down font system
+Shutting down SDL
+SDL Compile-time version:1.2.15
+SDL Runtime version:1.2.14
+Video subsystem initialised
+**************Current video mode*******************
+Checking requested screen mode: 640 x 480 at 32 BPP
+Video mode set to 640 x 480 at 32 Bpp with flags SDL_SWSURFACE 
+Shutting down font system
+Shutting down SDL
+SDL Compile-time version:1.2.15
+SDL Runtime version:1.2.14
+Video subsystem initialised
+**************Current video mode*******************
+Checking requested screen mode: 640 x 480 at 32 BPP
+Video mode set to 640 x 480 at 32 Bpp with flags SDL_SWSURFACE SDL_FULLSCREEN 
+Shutting down font system
+Shutting down SDL
+SDL Compile-time version:1.2.15
+SDL Runtime version:1.2.14
+Video subsystem initialised
+**************Current video mode*******************
+Checking requested screen mode: 640 x 480 at 32 BPP
+**SDL_HWSURFACE requested but is not supported using SW_SURFACE**
+Video mode set to 640 x 480 at 32 Bpp with flags SDL_SWSURFACE SDL_FULLSCREEN 
+Shutting down font system
+Shutting down SDL
+SDL Compile-time version:1.2.15
+SDL Runtime version:1.2.14
+Video subsystem initialised
+**************Current video mode*******************
+Checking requested screen mode: 0 x 480 at 32 BPP
+Requested video mode not available
+CSDL Failed to set video mode
+Shutting down font system
+Shutting down SDL
+SDL Compile-time version:1.2.15
+SDL Runtime version:1.2.14
+Video subsystem initialised
+**************Current video mode*******************
+Checking requested screen mode: 640 x 0 at 32 BPP
+Requested video mode not available
+CSDL Failed to set video mode
+Shutting down font system
+Shutting down SDL
+SDL Compile-time version:1.2.15
+SDL Runtime version:1.2.14
+Video subsystem initialised
+**************Current video mode*******************
+Checking requested screen mode: 640 x 480 at 0 BPP
+Requested video mode not available
+CSDL Failed to set video mode
+Shutting down font system
+Shutting down SDL
+SDL Compile-time version:1.2.15
+SDL Runtime version:1.2.14
+Video subsystem initialised
+**************Current video mode*******************
+Checking requested screen mode: 640 x 480 at 32 BPP
+Video mode set to 640 x 480 at 32 Bpp with flags SDL_SWSURFACE 
+Shutting down font system
+Shutting down SDL
+SDL Compile-time version:1.2.15
+SDL Runtime version:1.2.14
+Video subsystem initialised
+**************Current video mode*******************
+Checking requested screen mode: 640 x 480 at 32 BPP
+Video mode set to 640 x 480 at 32 Bpp with flags SDL_SWSURFACE 
+Shutting down font system
+Shutting down SDL
+SDL Compile-time version:1.2.15
+SDL Runtime version:1.2.14
+Video subsystem initialised
+**************Current video mode*******************
+Checking requested screen mode: 640 x 480 at 32 BPP
+Video mode set to 640 x 480 at 32 Bpp with flags SDL_SWSURFACE 
+Shutting down font system
+Shutting down SDL
+SDL Compile-time version:1.2.15
+SDL Runtime version:1.2.14
+Video subsystem initialised
+**************Current video mode*******************
+Checking requested screen mode: 640 x 480 at 32 BPP
+Video mode set to 640 x 480 at 32 Bpp with flags SDL_SWSURFACE 
+Trying to load missingfile.png
+'CSDL_Render::LoadImageFromFile' failed to load image in to SDL_Surface, ensure correct filename and path
+Shutting down font system
+Shutting down SDL
+SDL Compile-time version:1.2.15
+SDL Runtime version:1.2.14
+Video subsystem initialised
+**************Current video mode*******************
+Checking requested screen mode: 640 x 480 at 32 BPP
+Video mode set to 640 x 480 at 32 Bpp with flags SDL_SWSURFACE 
+Trying to load ./images/testbmp.bmp
+Image ./images/testbmp.bmp loaded successfully
+Shutting down font system
+Shutting down SDL
+SDL Compile-time version:1.2.15
+SDL Runtime version:1.2.14
+Video subsystem initialised
+**************Current video mode*******************
+Checking requested screen mode: 640 x 480 at 32 BPP
+Video mode set to 640 x 480 at 32 Bpp with flags SDL_SWSURFACE 
+Shutting down font system
+Shutting down SDL
+SDL Compile-time version:1.2.15
+SDL Runtime version:1.2.14
+Video subsystem initialised
+**************Current video mode*******************
+Checking requested screen mode: 640 x 480 at 32 BPP
+Video mode set to 640 x 480 at 32 Bpp with flags SDL_SWSURFACE 
+Shutting down font system
+Shutting down SDL
+SDL Compile-time version:1.2.15
+SDL Runtime version:1.2.14
+Video subsystem initialised
+**************Current video mode*******************
+Checking requested screen mode: 640 x 480 at 32 BPP
+Video mode set to 640 x 480 at 32 Bpp with flags SDL_SWSURFACE 
+Trying to load ./images/testpng.png
+Image ./images/testpng.png loaded successfully
+Shutting down font system
+Shutting down SDL
+SDL Compile-time version:1.2.15
+SDL Runtime version:1.2.14
+Video subsystem initialised
+**************Current video mode*******************
+Checking requested screen mode: 640 x 480 at 32 BPP
+Video mode set to 640 x 480 at 32 Bpp with flags SDL_SWSURFACE 
+Trying to load ./images/testjpg.jpg
+Image ./images/testjpg.jpg loaded successfully
+Shutting down font system
+Shutting down SDL
+SDL Compile-time version:1.2.15
+SDL Runtime version:1.2.14
+Video subsystem initialised
+**************Current video mode*******************
+Checking requested screen mode: 640 x 480 at 32 BPP
+Video mode set to 640 x 480 at 32 Bpp with flags SDL_SWSURFACE 
+Shutting down font system
+Shutting down SDL
+SDL Compile-time version:1.2.15
+SDL Runtime version:1.2.14
+Video subsystem initialised
+**************Current video mode*******************
+Checking requested screen mode: 640 x 480 at 32 BPP
+Video mode set to 640 x 480 at 32 Bpp with flags SDL_SWSURFACE 
+Shutting down font system
+Shutting down SDL

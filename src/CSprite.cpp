@@ -1,4 +1,4 @@
-#include "CSprite.h"
+#include "../include/CSprite.h"
 #include <iostream>
 
 using namespace std;
