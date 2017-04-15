@@ -146,23 +146,23 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\include\CCanvas.h" />
     <ClInclude Include="..\..\..\include\CCollision.h" />
     <ClInclude Include="..\..\..\include\CGrid.h" />
-    <ClInclude Include="..\..\..\include\CSDLGraphics.h" />
     <ClInclude Include="..\..\..\include\CSDLSound.h" />
     <ClInclude Include="..\..\..\include\CSprite.h" />
     <ClInclude Include="..\..\..\include\CWindow.h" />
     <ClInclude Include="..\..\..\include\Globals.h" />
-    <ClInclude Include="..\..\..\include\IRenderInterface.h" />
+    <ClInclude Include="..\..\..\include\ICanvas.h" />
     <ClInclude Include="..\..\..\include\IScreen.h" />
     <ClInclude Include="..\..\..\include\IWindow.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\src\CCanvas.cpp" />
     <ClCompile Include="..\..\..\src\CCollision.cpp" />
     <ClCompile Include="..\..\..\src\CGrid.cpp" />
-    <ClCompile Include="..\..\..\src\CSDLGraphics.cpp" />
     <ClCompile Include="..\..\..\src\CSDLSound.cpp" />
     <ClCompile Include="..\..\..\src\CSprite.cpp" />
     <ClCompile Include="..\..\..\src\CWindow.cpp" />

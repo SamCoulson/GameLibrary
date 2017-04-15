@@ -3,7 +3,7 @@
 
 //#include "Globals.h"
 #include "stdlib.h"
-#include "CSDLGraphics.h"
+#include "CCanvas.h"
 
 enum {
 	TOP_EDGE = 1,

@@ -1,3 +1,4 @@
-﻿  CWindow.cpp
+﻿  CCanvas.cpp
+d:\code\gamelibrary\src\ccanvas.cpp(134): warning C4838: conversion from 'unsigned int' to 'Uint8' requires a narrowing conversion
   gamelib.vcxproj -> D:\Code\GameLibTestApp\Debug\gamelib.dll
   gamelib.vcxproj -> D:\Code\GameLibTestApp\Debug\gamelib.pdb (Full PDB)

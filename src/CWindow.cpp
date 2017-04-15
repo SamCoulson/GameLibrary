@@ -5,44 +5,50 @@
 using namespace std;
 
 // Initialises the SDL library with the given arguments in the parameter list
-bool CWindow::initialise(const char* windowTitle, UINT screenWidth, UINT screenHeight, UINT screenBPP, Uint32 surfaceType)
+bool CWindow::create(const char* windowTitle, UINT screenWidth, UINT screenHeight, Uint32 surfaceType)
 {
 	// Start SDL for VIDEO
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-		// Send some errors to stderr
-		cout << "Failed to initialise SDL subsystem" << endl;
-		cerr << SDL_GetError() << endl;
+		SDL_Log("Failed to initialise SDL subsystem : %s", SDL_GetError());
 		return false;
 	}
 
 	if (SDL_WasInit(SDL_INIT_VIDEO)) {
-		cout << "Video subsystem initialised" << endl;
+		SDL_Log("Video subsystem initialised");
 	}
 
 	// Load the font library 
 	if (TTF_Init() == -1)
 	{
-		cout << "TTF_Init() Failed" << endl;
+		SDL_Log("TTF_Init() Failed : %s", SDL_GetError());
 		return false;
 	}
 
+	// Initialise SDL_Image
+	int flags=IMG_INIT_JPG|IMG_INIT_PNG;
+	int initialisedFlags=IMG_Init(flags);
+	if ((initialisedFlags) != flags)
+	{
+		SDL_Log("IMG_Init: Failed to init required jpg and png support!\n");
+		SDL_Log("IMG_Init: %s\n", IMG_GetError());
+	}
+    
 	// Set the video mode
 	// surfaceType can be a set of OR'd flags not bitwise but logical OR *Need to fix the log output currently just puts 0. 
-	if (!createWindow(windowTitle, screenWidth, screenHeight, screenBPP, surfaceType)) {
-		cout << "CSDL Failed create window" << endl;
+	if (!createWindow(windowTitle, screenWidth, screenHeight, surfaceType)) {
+		SDL_Log("CWindow->create failed create window : %s", SDL_GetError());
 		return false;
 	}
 
 	// Output compiled and linked against SDL versions (useful for debug)
-	getCompiledAndLinkedVersionInfo();
+	logCompiledAndLinkedVersionInfo();
 
-	// Everything set up successfully
-	screenSurface = SDL_GetWindowSurface(window);
+	getVideoModes();
 
 	return true;
 }
 
-void CWindow::getCompiledAndLinkedVersionInfo()
+void CWindow::logCompiledAndLinkedVersionInfo()
 {
 	// Get version that was compiled against 
 	SDL_version compver;
@@ -53,58 +59,33 @@ void CWindow::getCompiledAndLinkedVersionInfo()
 	SDL_GetVersion(&runver);
 
 	// Output version information to stdout
-	cout << "SDL Compile-time version:" << (int)compver.major << "." << (int)compver.minor << "." << (int)compver.patch << endl;
-	cout << "SDL Runtime version:" << (int)runver.major << "." << (int)runver.minor << "." << (int)runver.patch << endl;
+	SDL_Log("SDL Compile-time version: %d.%d.%d", (int)compver.major, (int)compver.minor, (int)compver.patch);
+	SDL_Log("SDL Runtime version: %d.%d.%d", (int)runver.major, (int)runver.minor, (int)runver.patch);
 }
 
 // shutdown - closes any systems running and outputs to log
 void CWindow::shutdown() {
 
+	if (window != NULL)
+	{
+		SDL_DestroyWindow(window);
+	}
+
+	// Unload SDL_Image libraries
+	IMG_Quit();
+
 	// Shutdown the font system.
-	cout << "Shutting down font system" << endl;
+	SDL_Log("Shutting down font system");
 	TTF_Quit();
 
 	// SDL Quit
-	cout << "Shutting down SDL" << endl;
+	SDL_Log("Shutting down SDL");
 	SDL_Quit();
 }
 
-// OutputVideoModeInfo() - Outputs video info to cout. Can be called before or after the video mode is set but will contain different info  
-void CWindow::outputVideoModeInfo(void) {
-
-	//char viddrvname[7];	// Buffer for name of video driver
-
-	//cout << "**************Video mode info*******************\n" << endl;
-
-	//// Get name of video driver **This can be found or included in the video info function**
-	//if(SDL_VideoDriverName(viddrvname, 7) == NULL)
-	//{
-	//	cout << "Unable to determine video driver name\n" << endl; 
-	//}else{
-	//	cout << "Driver: " << viddrvname << endl;
-	//}
-
-	//const SDL_VideoInfo *vidinfo = NULL; // Video capabilites
-
-	//// Get optimal video info see docs for all the settings
-	//vidinfo = SDL_GetVideoInfo();
-
-	//if( vidinfo != NULL){
-	//	cout << "Available hardware video memory: " << vidinfo->video_mem <<
-	//	"\nCurrent video resolution: " << vidinfo->current_w << " x " << vidinfo->current_h << 
-	//	"\nHardware surfaces available: " << vidinfo->hw_available << 
-	//	"\nCurrent video format (BitPerPixel): " << (int)vidinfo->vfmt->BitsPerPixel << 
-	//	"\nCurrent video format (Colour Key): " << vidinfo->vfmt->colorkey << endl;
-	//}else{
-	//	cout << "" << endl;
-	//}
-}
-
 // Returns video possible resolutions for a given video mode.  
-void CWindow::outputVideoModes(void) {
-
-	// NEED TO DO THE FOLLOWING IF YOU WANT TO DO THIS use SDL_GetDisplayMode()/SDL_GetNumDisplayModes() instead
-
+void CWindow::getVideoModes(void) 
+{	
 	// Get available screen hardware modes, fullscreen will give a list of modes, other options many just return All resolutions possible
 	// The reason for this is because any dimensions can be passed in during setup IF we want windows mode.  This will merely open a window the size of
 	// the given dimensions with a front buffer of the matching size.  Fullscreen will still accept non-regular dimensions and initialise 
@@ -114,82 +95,59 @@ void CWindow::outputVideoModes(void) {
 	// Changing bpp per pixel seems like a bad idea aswell, i think it may end up messing up the users desktop.
 	// A better idea might be to the default as the users current settings.
 
-	//SDL_Rect **modes;					 // List of video modes
+	SDL_Log("**************Possible video modes*******************");
 
-	//cout << "**************Possible video modes*******************\n" << endl;
+	int videoDisplayCount = SDL_GetNumVideoDisplays();
+	if (videoDisplayCount < 1)
+	{
+		SDL_Log("SDL_GetNumVideoDisplays() returned: %s", videoDisplayCount);
+		return;
+	}
 
-	//modes = SDL_ListModes(NULL, SDL_FULLSCREEN | SDL_HWSURFACE);
-	//if( modes == (SDL_Rect**)0){
-	//	cout << "No modes available" << endl;
-	//	//return false;
-	//}else if( modes == (SDL_Rect**)-1){
-	//	cout << "All resolutions available "<< endl;		
-	//}else{
-	//	cout << "Available modes" << endl;
-	//	for(int i=0; modes[i]; ++i){
-	//		cout << modes[i]->w << " x " << modes[i]->h << endl;
-	//	}
-	//}
+	int displayCount = SDL_GetNumDisplayModes(0);
+	if (displayCount < 1)
+	{
+		SDL_Log("SDL_GetNumDisplayModes() returned: %s", displayCount);
+		return;
+	}
 
+	SDL_DisplayMode current;
+	for (int i = 0; i < displayCount; i++)
+	{
+		if (SDL_GetCurrentDisplayMode(i, &current) != 0)
+		{
+			SDL_Log("Could not get display mode for video display mode #%d: %s", i, SDL_GetError());
+		}
+		else
+		{
+			SDL_Log("Display #%d current display mode is %dx%dpx @ %dhz.", i, current.w, current.h, current.refresh_rate);
+		}
+	}
+	
 }
 
-bool CWindow::createWindow(const char* windowTitle, UINT screenWidth, UINT screenHeight, UINT screenBPP, Uint32 surfaceType)
+bool CWindow::createWindow(const char* windowTitle, UINT screenWidth, UINT screenHeight, Uint32 surfaceType)
 {
-	//cout << "**************Current video mode*******************" << endl;
-
-	//// Check that the requested video mode is available, if it isnt get the closest
-	//cout << "Checking requested screen mode: "<< screenWidth << " x " << screenHeight << " at " << screenBPP << " BPP" <<  endl;
-
-	//
-
-	//bool SDL_GetClosetDisplayMode()
-
-	//if(bpp == 0){
-	//	cout << "Requested video mode not available" << endl;
-	//	// Could just let it go and let SDL emulate the color depth but i want know what going on
-	//	// Alternatively add a warning to the log to say what is going on.
-	//	return false;
-	//}else{
-	//	
-	//	// If video mode available, setup and create screen surface	
-	//	// NOTE: screenSurface is actually a private member and so should
-	//	// probably be named _m_screenSurface
-	//	screenSurface = SDL_SetVideoMode( screenWidth, screenHeight, screenBPP, surfaceType );
-	//	if(screenSurface == NULL){
-	//		cout << "Could not set SDL video mode" << endl;
-	//		return false;
-	//	}
-
-	//	// If HWSURFACE is not suported on the card then warn
-	//	if( ( surfaceType & SDL_HWSURFACE ) && ( ( screenSurface->flags & SDL_HWSURFACE ) ==0 ) )
-	//		std::cout << "**SDL_HWSURFACE requested but is not supported using SW_SURFACE**" << endl;
-
-	//	// Out for startup log
-	//	cout << "Video mode set to " << screenSurface->w << " x " << screenSurface->h << " at " << (int)screenSurface->format->BitsPerPixel << " Bpp" 
-	//		<< " with flags ";
-	//
-	//	// Determine what flags are set
-	//	if( ( screenSurface->flags & SDL_SWSURFACE ) == 0 )
-	//		std::cout << "SDL_SWSURFACE ";
-	//	if( screenSurface->flags & SDL_HWSURFACE )
-	//		std::cout << "SDL_HWSURFACE ";	
-	//	if( screenSurface->flags & SDL_FULLSCREEN )
-	//		std::cout << "SDL_FULLSCREEN ";
-	//	if( screenSurface->flags & SDL_ASYNCBLIT )
-	//		std::cout << "SDL_ASYNCBLIT ";
-	//	if( screenSurface->flags & SDL_HWPALETTE )
-	//		std::cout << "SDL_HWPALETTE ";
-	//	// NEEDS OTHER FLAGS ADDING
-	//	std::cout << endl;
-	//}
-
 	// Create window 
-	window = SDL_CreateWindow(windowTitle, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screenWidth, screenHeight, SDL_WINDOW_SHOWN);
+	window = SDL_CreateWindow(windowTitle, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screenWidth, screenHeight, SDL_WINDOW_SHOWN);  // or SDL_WINDOW_FULLSCREEN | SDL_WINDOW_OPENGL
 	if (window == NULL)
 	{
-		printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
+		SDL_Log("Window could not be created! SDL_Error: %s\n", SDL_GetError());
 		return false;
 	}
-	SDL_Delay(2000);
+
+	SDL_Renderer* sdlRenderer = SDL_CreateRenderer(window, -1, 0);
+	if (sdlRenderer == NULL) {
+		SDL_Log("Unable to create SDL renderer: %s\n", SDL_GetError());
+		return false;
+	}
+	
+	canvas = new CCanvas(sdlRenderer);
+
 	return true;
+}
+
+ICanvas* CWindow::getCanvas()
+{
+	return canvas;
 }
