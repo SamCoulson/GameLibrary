@@ -98,7 +98,17 @@ void CCanvas::drawImage(int x, int y, SDL_Texture* srcImage, SDL_Rect* srcClipRe
 	SDL_Rect destXY;
 
 	int w, h;
-	SDL_QueryTexture(srcImage, NULL, NULL, &w, &h);
+
+	// Use full width and height if no src clip rect set
+	if (srcClipRect == NULL)
+	{
+		SDL_QueryTexture(srcImage, NULL, NULL, &w, &h);
+	}
+	else
+	{
+		w = srcClipRect->w;
+		h = srcClipRect->h;
+	}
 
 	// Take XY input and make them useable for Blit.
 	destXY.x = x;
@@ -112,7 +122,7 @@ void CCanvas::drawImage(int x, int y, SDL_Texture* srcImage, SDL_Rect* srcClipRe
 	}
 }
 
-void CCanvas::drawText( std::string text, int pos_x, int pos_y, std::string fontName, int fontSize, unsigned int r, unsigned int g, unsigned int b)
+void CCanvas::drawText( std::string text, int pos_x, int pos_y, std::string fontName, int fontSize, Uint8 r, Uint8 g, Uint8 b)
 {
 	// Pointer to font object
 	TTF_Font* m_pFont;
@@ -139,15 +149,19 @@ void CCanvas::drawText( std::string text, int pos_x, int pos_y, std::string font
 	if(text_surface == NULL)
 	{
 		SDL_Log("TTF_RenderText_Blended() failed: %s", SDL_GetError());
+		return;
 	}
 
 	SDL_Texture *textureSurface = SDL_CreateTextureFromSurface(sdlRenderer, text_surface);
 	if (textureSurface == NULL)
 	{
+		SDL_FreeSurface(text_surface);
 		SDL_Log("SDL_CreateTextureFromSurface() failed: %s", SDL_GetError());
 		return;
 	}
 
+	SDL_FreeSurface(text_surface);
+	
 	drawImage(pos_x, pos_y, textureSurface);
 	
 	// Release the Font
@@ -155,7 +169,7 @@ void CCanvas::drawText( std::string text, int pos_x, int pos_y, std::string font
 		TTF_CloseFont(m_pFont);
 	}
 
-	SDL_FreeSurface(text_surface);
+	SDL_DestroyTexture(textureSurface);
 }
 
 void CCanvas::drawPoint(UINT x, UINT y, UINT r, UINT g, UINT b)
@@ -181,7 +195,7 @@ void CCanvas::drawLine(UINT startX, UINT startY, UINT endX, UINT endY, UINT r, U
 
 void CCanvas::SetRenderColour(UINT r, UINT g, UINT b)
 {
-	if (SDL_SetRenderDrawColor(sdlRenderer, r, g, b, 255) < 0)
+	if (SDL_SetRenderDrawColor(sdlRenderer, r, g, b, 0) < 0)
 	{
 		SDL_Log("SDL_SetRenderDrawColor() failed: %s", SDL_GetError());
 	}
@@ -189,10 +203,10 @@ void CCanvas::SetRenderColour(UINT r, UINT g, UINT b)
 
 SDL_Texture* CCanvas::loadImage(std::string filename)
 {
-	return loadImage(filename, 0, 0, 0, 0);
+	return loadImage(filename, 0, 0, 0);
 }
 
-SDL_Texture* CCanvas::loadImage(std::string filename, Uint8 r, Uint8 g, Uint8 b, Uint8 a)
+SDL_Texture* CCanvas::loadImage(std::string filename, Uint8 r, Uint8 g, Uint8 b)
 {
 	// Surfaces for loaded file and converted file 
 	SDL_Surface *loadedImageFile = NULL;
@@ -209,12 +223,14 @@ SDL_Texture* CCanvas::loadImage(std::string filename, Uint8 r, Uint8 g, Uint8 b,
 	}
 	else
 	{
-		if (SDL_SetColorKey(loadedImageFile, SDL_TRUE, SDL_MapRGB(loadedImageFile->format, r, g, b)) < 0)
+		if (SDL_SetColorKey(loadedImageFile, SDL_TRUE, SDL_MapRGB(loadedImageFile->format, 0xFF, 0, 0xFF)) < 0)
 		{
 			SDL_Log("SDL_SetColorKey() failed: %s", SDL_GetError());
 		}
 
 		SDL_Texture *textureSurface = SDL_CreateTextureFromSurface(sdlRenderer, loadedImageFile);
+
+		SDL_FreeSurface(loadedImageFile);
 
 		if (textureSurface == NULL)
 		{
@@ -223,7 +239,6 @@ SDL_Texture* CCanvas::loadImage(std::string filename, Uint8 r, Uint8 g, Uint8 b,
 		}
 
 		// Free up original surface
-		SDL_FreeSurface(loadedImageFile);
 		SDL_Log("Image Loaded successfully");
 
 		return textureSurface;

@@ -8,11 +8,11 @@ d:\code\gamelibrary\build\gamelib\gamelib\debug\csprite.obj
 d:\code\gamelibrary\build\gamelib\gamelib\debug\cwindow.obj
 d:\code\gamelibrary\build\gamelib\gamelib\debug\stdafx.obj
 d:\code\gamelibrary\build\gamelib\gamelib\debug\dllmain.obj
-d:\code\gamelibtestapp\debug\gamelib.lib
-d:\code\gamelibtestapp\debug\gamelib.exp
-d:\code\gamelibtestapp\debug\gamelib.ilk
-d:\code\gamelibtestapp\debug\gamelib.dll
-d:\code\gamelibtestapp\debug\gamelib.pdb
+d:\code\blocker\build\blocker\debug\gamelib.lib
+d:\code\blocker\build\blocker\debug\gamelib.exp
+d:\code\blocker\build\blocker\debug\gamelib.ilk
+d:\code\blocker\build\blocker\debug\gamelib.dll
+d:\code\blocker\build\blocker\debug\gamelib.pdb
 d:\code\gamelibrary\build\gamelib\gamelib\debug\gamelib.tlog\cl.command.1.tlog
 d:\code\gamelibrary\build\gamelib\gamelib\debug\gamelib.tlog\cl.read.1.tlog
 d:\code\gamelibrary\build\gamelib\gamelib\debug\gamelib.tlog\cl.write.1.tlog

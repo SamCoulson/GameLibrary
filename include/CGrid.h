@@ -7,7 +7,7 @@ typedef struct _COORDS{
 }coords;
 
 
-class CGrid{
+class __declspec(dllexport) CGrid{
 
 	public:
 		CGrid(int grid_width, int grid_height, int tile_width, int tile_height, int start_x, int start_y );
@@ -45,4 +45,4 @@ class CGrid{
 	
 };
 
-#endif // INC_CGRID_H
+#endif INC_CGRID_H

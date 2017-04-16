@@ -1,4 +1,14 @@
-﻿  CCanvas.cpp
-d:\code\gamelibrary\src\ccanvas.cpp(134): warning C4838: conversion from 'unsigned int' to 'Uint8' requires a narrowing conversion
-  gamelib.vcxproj -> D:\Code\GameLibTestApp\Debug\gamelib.dll
-  gamelib.vcxproj -> D:\Code\GameLibTestApp\Debug\gamelib.pdb (Full PDB)
+﻿  stdafx.cpp
+  CWindow.cpp
+  CSprite.cpp
+  CSDLSound.cpp
+  CGrid.cpp
+d:\code\gamelibrary\src\cgrid.cpp(60): warning C4018: '>': signed/unsigned mismatch
+d:\code\gamelibrary\src\cgrid.cpp(76): warning C4018: '>': signed/unsigned mismatch
+  CCollision.cpp
+  CCanvas.cpp
+  Generating Code...
+  dllmain.cpp
+     Creating library D:\Code\blocker\build\blocker\Debug\gamelib.lib and object D:\Code\blocker\build\blocker\Debug\gamelib.exp
+  gamelib.vcxproj -> D:\Code\blocker\build\blocker\Debug\gamelib.dll
+  gamelib.vcxproj -> D:\Code\blocker\build\blocker\Debug\gamelib.pdb (Full PDB)

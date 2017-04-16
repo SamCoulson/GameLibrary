@@ -142,6 +142,8 @@ bool CWindow::createWindow(const char* windowTitle, UINT screenWidth, UINT scree
 		return false;
 	}
 	
+	SDL_RenderSetLogicalSize(sdlRenderer, screenWidth, screenHeight);
+
 	canvas = new CCanvas(sdlRenderer);
 
 	return true;

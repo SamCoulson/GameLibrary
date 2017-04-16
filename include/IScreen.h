@@ -1,11 +1,12 @@
 #ifndef H_CSCREENBASE_INC
 #define H_CSCREENBASE_INC
 
-#include "CSDLGraphics.h"
+#include "SDL/SDL.h"
+#include "ICanvas.h"
 
 class IScreen{
 	public:
-		IScreen( CSDLGraphics& ){};
+		IScreen( ICanvas& ){};
 		virtual ~IScreen(){};
 
 		// Initilaise the sprites and values for the screen
@@ -33,4 +34,4 @@ class IScreen{
 
 };
 
-#endif // H_CSCREENBASE_INC
+#endif H_CSCREENBASE_INC
