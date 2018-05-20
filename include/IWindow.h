@@ -1,7 +1,7 @@
 #ifndef INC_IWINDOW_H
 #define INC_IWINDOW_H
 
-#include "SDL/SDL.h"
+#include "SDL.h"
 #include "Globals.h"
 #include "CCanvas.h"
 

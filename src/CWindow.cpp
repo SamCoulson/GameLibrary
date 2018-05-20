@@ -1,4 +1,4 @@
-#include "../include/CWindow.h"
+#include "CWindow.h"
 #include <iostream>
 #include <string.h>
 

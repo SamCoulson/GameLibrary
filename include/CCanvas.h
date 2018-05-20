@@ -2,12 +2,12 @@
 #ifndef INC_CCANVAS_H
 #define INC_CCANVAS_H
 
-#include "SDL/SDL.h"
-#include "SDL/SDL_image.h"
-#include "SDL/SDL_ttf.h"
+#include "SDL.h"
+#include "SDL_image.h"
+#include "SDL_ttf.h"
 #include "ICanvas.h"
-#include <iostream>
 #include "Globals.h"
+#include <iostream>
 
 // Provides methods to draw things to the screen
 class __declspec(dllexport) CCanvas : public ICanvas

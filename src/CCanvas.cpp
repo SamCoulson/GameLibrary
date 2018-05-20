@@ -3,7 +3,7 @@
 // CSDLGraphics - SDL Graphics object for setting up window, shutdown and displaying graphics
 //
 //////////////////////////////////////////////////////////////////////////////////////////////
-#include "../include/CCanvas.h"
+#include "CCanvas.h"
 #include <iostream>
 #include <string.h>
 

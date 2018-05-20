@@ -1,7 +1,7 @@
 #ifndef INC_ICANVAS_H
 #define INC_ICANVAS_H
 
-#include "SDL/SDL.h"
+#include "SDL.h"
 #include <string>
 #include <list>
 #include "Globals.h"
